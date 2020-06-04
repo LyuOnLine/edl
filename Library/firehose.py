@@ -698,12 +698,15 @@ class qualcomm_firehose:
                 logger.warning("Couldn't detect Version")
         else:
             if "MaxPayloadSizeToTargetInBytes" in rsp[1]:
-                self.cfg.MemoryName = rsp[1]["MemoryName"]
-                self.cfg.MaxPayloadSizeToTargetInBytes = int(rsp[1]["MaxPayloadSizeToTargetInBytes"])
-                self.cfg.MaxPayloadSizeToTargetInBytesSupported = int(rsp[1]["MaxPayloadSizeToTargetInBytesSupported"])
-                self.cfg.MaxXMLSizeInBytes = int(rsp[1]["MaxXMLSizeInBytes"])
-                self.cfg.MaxPayloadSizeFromTargetInBytes = int(rsp[1]["MaxPayloadSizeFromTargetInBytes"])
-                self.cfg.TargetName = rsp[1]["TargetName"]
+                try:
+                    self.cfg.MemoryName = rsp[1]["MemoryName"]
+                    self.cfg.MaxPayloadSizeToTargetInBytes = int(rsp[1]["MaxPayloadSizeToTargetInBytes"])
+                    self.cfg.MaxPayloadSizeToTargetInBytesSupported = int(rsp[1]["MaxPayloadSizeToTargetInBytesSupported"])
+                    self.cfg.MaxXMLSizeInBytes = int(rsp[1]["MaxXMLSizeInBytes"])
+                    self.cfg.MaxPayloadSizeFromTargetInBytes = int(rsp[1]["MaxPayloadSizeFromTargetInBytes"])
+                    self.cfg.TargetName = rsp[1]["TargetName"]
+                except:
+                    pass
                 if "MSM" not in self.cfg.TargetName:
                     self.cfg.TargetName = "MSM" + self.cfg.TargetName
                 self.cfg.Version = rsp[1]["Version"]
