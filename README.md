@@ -32,6 +32,18 @@ or
 
 ## Run EDL (examples)
 
+### QFIL in linux console:
+
+![qfill.svg](doc/qfil.svg)
+- update python enviroments and requirements:
+   ```
+   pipenv sync
+   ```
+- qfil.py to burn full image:
+   ```
+   pipenv run python qfil.py --log_level info --firehose prog_firehose_lite.elf --rawprogram rawprogram0.xml --patch patch0.xml --imagedir image_dir
+   ```
+
 ### Generic
 
 - "./edl.py -h" -> to see help with all options
